@@ -1,5 +1,13 @@
+import { FooterMainMenu, MainNavbar } from "@/components";
+
 const page = () => {
-  return <div>page11</div>;
+  return (
+    <div>
+      <MainNavbar />
+      page11
+      <FooterMainMenu />
+    </div>
+  );
 };
 
 export default page;
