@@ -1,3 +1,7 @@
 export const MainNavbar = () => {
-  return <div>MainNavbar</div>;
+  return (
+    <div>
+      <p className="text-2xl text-white mb-4">Bienvenido </p>
+    </div>
+  );
 };

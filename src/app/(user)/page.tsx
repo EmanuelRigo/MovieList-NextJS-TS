@@ -1,40 +1,26 @@
-"use client";
-
 import { CardRow, FooterMainMenu, MainNavbar } from "@/components";
 import CardMovieViewer from "@/components/movie-viewer/CardMovieViewer";
-import { useEffect, useState } from "react";
+import { CardMovie } from "@/components/ui/CardMovie";
+import { SearchBar } from "@/components/ui/SearchBar";
 
 const page = () => {
-  const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
-    <div className="grid lg:grid-cols-3 gap3 h-screen">
-      <div className="bg-zinc-500">
-        <MainNavbar />
-        page11
+    <div className="container bg-gray-900 mx-auto grid lg:grid-cols-3 gap3 h-screen">
+      <div className="flex flex-col justify-between p-4">
+        <div>
+          <MainNavbar />
+          <CardMovie></CardMovie>
+        </div>
+
+        <SearchBar></SearchBar>
         <FooterMainMenu />
       </div>
-      {screenWidth >= 1024 && (
-        <div className=" bg-slate-500">
-          <CardRow />
-        </div>
-      )}{" "}
-      {screenWidth >= 1024 && (
-        <div className=" bg-orange-600">
-          <CardMovieViewer />
-        </div>
-      )}
+      <div className="hidden lg:block">
+        <CardRow />
+      </div>
+      <div className="hidden lg:block ">
+        <CardMovieViewer />
+      </div>
     </div>
   );
 };
