@@ -1,4 +1,4 @@
-import { CardRow, FooterMainMenu, MainNavbar } from "@/components";
+import { CardRow, FooterMainMenu, MainNavbar, MovieList } from "@/components";
 import CardMovieViewer from "@/components/movie-viewer/CardMovieViewer";
 import { CardMovie } from "@/components/ui/CardMovie";
 import { SearchBar } from "@/components/ui/SearchBar";
@@ -16,7 +16,7 @@ const page = () => {
         <FooterMainMenu />
       </div>
       <div className="hidden lg:block">
-        <CardRow />
+        <MovieList></MovieList>
       </div>
       <div className="hidden lg:block ">
         <CardMovieViewer />
