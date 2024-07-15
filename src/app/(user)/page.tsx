@@ -15,7 +15,7 @@ const page = () => {
         <SearchBar></SearchBar>
         <FooterMainMenu />
       </div>
-      <div className="hidden lg:block">
+      <div className="hidden bg-red-800 lg:block h-full">
         <MovieList></MovieList>
       </div>
       <div className="hidden lg:block ">
