@@ -5,7 +5,7 @@ import { SearchBar } from "@/components/ui/SearchBar";
 
 const page = () => {
   return (
-    <div className="container bg-gray-900 mx-auto grid lg:grid-cols-3 gap3 h-screen">
+    <div className="container bg-gray-900 mx-auto grid lg:grid-cols-3 gap3  h-screen">
       <div className="flex flex-col justify-between p-4">
         <div>
           <MainNavbar />
@@ -15,10 +15,10 @@ const page = () => {
         <SearchBar></SearchBar>
         <FooterMainMenu />
       </div>
-      <div className="hidden bg-red-800 lg:block h-full">
+      <div className="hidden lg:block h-full bg-red-800 ">
         <MovieList></MovieList>
       </div>
-      <div className="hidden lg:block ">
+      <div className="hidden lg:block h-full">
         <CardMovieViewer />
       </div>
     </div>
