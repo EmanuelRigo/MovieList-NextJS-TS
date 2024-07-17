@@ -1,9 +1,9 @@
-import { CardRow, FooterMainMenu } from "@/components";
+import { CardRow, FooterMainMenu, MovieList } from "@/components";
 
 export default function page() {
   return (
     <div>
-      <CardRow />
+      <MovieList></MovieList>
       <FooterMainMenu />
     </div>
   );

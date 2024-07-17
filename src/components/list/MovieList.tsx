@@ -2,20 +2,28 @@ import { CardRow } from "./CardRow";
 
 export const MovieList = () => {
   return (
-    <div className="bg-blue-800 justify-between flex flex-col h-screen">
-      <p className="p-4 text-2xl">MovieList</p>
-      <div className="h-full bg-yellow-400 overflow-auto">
-        <CardRow></CardRow>
-        <CardRow></CardRow>
-        <CardRow></CardRow>
-        <CardRow></CardRow>
-        <CardRow></CardRow>
-        <CardRow></CardRow>
-        <CardRow></CardRow>
-        <CardRow></CardRow>
-        <CardRow></CardRow>
+    <div className="p-4 flex flex-col h-screen lg:h-full">
+      <p className="text-2xl text-white">MovieList</p>
+      <div className="relative my-4 rounded-lg flex-grow  overflow-auto">
+        <div className="w-full absolute">
+          <CardRow></CardRow>
+          <CardRow></CardRow>
+          <CardRow></CardRow>
+          <CardRow></CardRow>
+          <CardRow></CardRow>
+          <CardRow></CardRow>
+          <CardRow></CardRow>
+          <CardRow></CardRow>
+          <CardRow></CardRow>
+          <CardRow></CardRow> <CardRow></CardRow>
+          <CardRow></CardRow>
+          <CardRow></CardRow>
+          <CardRow></CardRow>
+          <CardRow></CardRow>
+        </div>
       </div>
-      <p className="p-4 text-2xl">MovieList</p>
+
+      <p className="text-2xl text-white">MovieLisaaaaaaaaaaat</p>
     </div>
   );
 };
