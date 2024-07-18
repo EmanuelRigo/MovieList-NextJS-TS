@@ -22,8 +22,6 @@ export const MovieList = () => {
           <CardRow></CardRow>
         </div>
       </div>
-
-      <p className="text-2xl text-white">MovieLisaaaaaaaaaaat</p>
     </div>
   );
 };

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { CiCircleList, CiSquarePlus } from "react-icons/ci";
 
 export const FooterMainMenu = () => {
   const router = useRouter();
@@ -10,13 +11,25 @@ export const FooterMainMenu = () => {
   console.log(pathname);
 
   return (
-    <div className="rounded-lg w-full flex flex-column justify-between bg-orange-500 p-4">
+    <div className="w-full flex gap-4 justify-between ">
       {pathname == "/" ? (
-        <Link href="/list">Lista</Link>
+        <Link
+          style={{ fontSize: "4rem" }}
+          className="bg-orange-500 rounded-lg  h-36 flex w-full justify-center items-center text-2xl"
+          href="/list"
+        >
+          <CiCircleList />
+        </Link>
       ) : (
         <Link href="/">Home</Link>
       )}
-      <Link href="/add-movie">Sumar</Link>
+      <Link
+        style={{ fontSize: "4rem" }}
+        className="bg-orange-500 rounded-lg w-full h-36 flex justify-center items-center "
+        href="/add-movie"
+      >
+        <CiSquarePlus />
+      </Link>
     </div>
   );
 };

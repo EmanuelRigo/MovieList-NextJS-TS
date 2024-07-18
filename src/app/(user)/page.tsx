@@ -7,14 +7,14 @@ const page = () => {
   return (
     <div className="h-screen w-screen flex items-center">
       <div className="container rounded-lg bg-gray-900 mx-auto grid lg:grid-cols-3 gap3 h-full lg:h-5/6 overflow-auto">
-        <div className="flex flex-col justify-between p-4">
+        <div className="h-full flex flex-col justify-between p-4 mb-8 lg:mb-auto">
           <div>
             <MainNavbar />
             <CardMovie></CardMovie>
           </div>
 
-          <SearchBar></SearchBar>
           <FooterMainMenu />
+          <SearchBar></SearchBar>
         </div>
         <div className="hidden lg:block h-full">
           <MovieList></MovieList>
