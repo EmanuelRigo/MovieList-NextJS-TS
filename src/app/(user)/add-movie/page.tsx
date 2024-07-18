@@ -1,3 +1,9 @@
+import { AddMovie } from "@/components";
+
 export default function page() {
-  return <div>addMovie</div>;
+  return (
+    <div>
+      <AddMovie />
+    </div>
+  );
 }
