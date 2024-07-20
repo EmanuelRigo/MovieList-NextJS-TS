@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { Pelicula } from "@/interfaces/interfaces";
 import { BsSearch } from "react-icons/bs";
-import Image from "next/image";
-import CardMovieViewer from "../movie-viewer/CardMovieViewer";
+import Image, { ImageLoaderProps } from "next/image";
 
 export const AddMovie = () => {
   const urlBase: string = "https://api.themoviedb.org/3/search/movie";
@@ -16,6 +15,7 @@ export const AddMovie = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBusqueda(e.target.value);
   };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     fetchPeliculas();
@@ -32,6 +32,12 @@ export const AddMovie = () => {
     } catch (error) {
       console.error("Ha ocurrido un error: ", error);
     }
+  };
+
+  const myLoader = ({ src, width, quality }: ImageLoaderProps) => {
+    return `https://image.tmdb.org/t/p/w500${src}?w=${width}&q=${
+      quality || 75
+    }`;
   };
 
   return (
@@ -54,30 +60,36 @@ export const AddMovie = () => {
         </form>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
-          <CardMovieViewer></CardMovieViewer>
-          <CardMovieViewer></CardMovieViewer>
-          <CardMovieViewer></CardMovieViewer>
-          <CardMovieViewer></CardMovieViewer>
-          <CardMovieViewer></CardMovieViewer>
-          <CardMovieViewer></CardMovieViewer>
-          <CardMovieViewer></CardMovieViewer>
-
           {peliculas.map((pelicula: Pelicula) => (
-            <CardMovieViewer></CardMovieViewer>
-            // <div className="max-w-sm bg-white rounded-lg shadow-md" key={pelicula.id}>
-            //   <Image
-            //     src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
-            //     alt={pelicula.title}
-            //   />{" "}
-            //   <Image
-            //     src={`https://image.tmdb.org/t/p/w500${pelicula.backdrop_path}`}
-            //     alt={pelicula.title}
-            //   />
-            //   <h2>{pelicula.title}</h2>
-            //   <h2>{pelicula.release_date}</h2>
-            //   <p>{pelicula.overview}</p>
-            //   <button>agregar pelicula</button>
-            // </div>
+            <div
+              className="max-w-sm bg-white rounded-lg shadow-md h-4/6 relative"
+              key={pelicula.id}
+            >
+              {pelicula.poster_path && (
+                <Image
+                  loader={myLoader}
+                  src={pelicula.poster_path}
+                  alt={pelicula.title}
+                  layout="fill"
+                  objectFit="cover"
+                  className="object-cover rounded-lg"
+                />
+              )}
+              {pelicula.backdrop_path && (
+                <Image
+                  loader={myLoader}
+                  src={pelicula.backdrop_path}
+                  alt={pelicula.title}
+                  layout="fill"
+                  objectFit="cover"
+                  className="object-cover rounded-lg"
+                />
+              )}
+              <h2>{pelicula.title}</h2>
+              <h2>{pelicula.release_date}</h2>
+              <p>{pelicula.overview}</p>
+              <button>Agregar película</button>
+            </div>
           ))}
         </div>
       </div>

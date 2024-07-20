@@ -1,3 +1,3 @@
 export const CardAddMovie = () => {
-  return <div>CardAddMovie</div>;
+  return <div>CardMovie</div>;
 };
