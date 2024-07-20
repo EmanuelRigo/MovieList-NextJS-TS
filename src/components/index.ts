@@ -10,3 +10,4 @@ export * from "./ui/SearchBar";
 export * from "./ui/CardMovie";
 
 export * from "./add-movie/AddMovie";
+export * from "./add-movie/CardAddMovie";

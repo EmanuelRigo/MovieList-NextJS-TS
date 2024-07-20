@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { Pelicula } from "@/interfaces/interfaces";
+import { BsSearch } from "react-icons/bs";
+import Image from "next/image";
+import CardMovieViewer from "../movie-viewer/CardMovieViewer";
 
 export const AddMovie = () => {
   const urlBase: string = "https://api.themoviedb.org/3/search/movie";
@@ -32,37 +35,51 @@ export const AddMovie = () => {
   };
 
   return (
-    <div className="container">
-      <h1 className="title">Buscador de Películas para agregar</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Escribí una película"
-          value={busqueda}
-          onChange={handleInputChange}
-        />
-        <button type="submit" className="search-button">
-          Buscar
-        </button>
-      </form>
+    <div className="h-screen w-screen flex items-center">
+      <div className="container rounded-lg bg-gray-900 mx-auto h-full lg:h-5/6 overflow-auto flex flex-col items-start lg:items-center justify-center ">
+        <form
+          onSubmit={handleSubmit}
+          className="flex w-4/5 lg:w-2/4 bg-white items-center rounded-full overflow-hidden shadow-sm"
+        >
+          <input
+            type="text"
+            placeholder="Buscar..."
+            className="w-full py-3 px-4 focus:outline-none"
+            value={busqueda}
+            onChange={handleInputChange}
+          />
+          <button type="submit" className="py-3 px-4">
+            <BsSearch />
+          </button>
+        </form>
 
-      <div className="movie-list">
-        {peliculas.map((pelicula: Pelicula) => (
-          <div key={pelicula.id} className="movie-card">
-            <img
-              src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
-              alt={pelicula.title}
-            />{" "}
-            <img
-              src={`https://image.tmdb.org/t/p/w500${pelicula.backdrop_path}`}
-              alt={pelicula.title}
-            />
-            <h2>{pelicula.title}</h2>
-            <h2>{pelicula.release_date}</h2>
-            <p>{pelicula.overview}</p>
-            <button className="btn btn-primary">agregar pelicula</button>
-          </div>
-        ))}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
+          <CardMovieViewer></CardMovieViewer>
+          <CardMovieViewer></CardMovieViewer>
+          <CardMovieViewer></CardMovieViewer>
+          <CardMovieViewer></CardMovieViewer>
+          <CardMovieViewer></CardMovieViewer>
+          <CardMovieViewer></CardMovieViewer>
+          <CardMovieViewer></CardMovieViewer>
+
+          {peliculas.map((pelicula: Pelicula) => (
+            <CardMovieViewer></CardMovieViewer>
+            // <div className="max-w-sm bg-white rounded-lg shadow-md" key={pelicula.id}>
+            //   <Image
+            //     src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`}
+            //     alt={pelicula.title}
+            //   />{" "}
+            //   <Image
+            //     src={`https://image.tmdb.org/t/p/w500${pelicula.backdrop_path}`}
+            //     alt={pelicula.title}
+            //   />
+            //   <h2>{pelicula.title}</h2>
+            //   <h2>{pelicula.release_date}</h2>
+            //   <p>{pelicula.overview}</p>
+            //   <button>agregar pelicula</button>
+            // </div>
+          ))}
+        </div>
       </div>
     </div>
   );
