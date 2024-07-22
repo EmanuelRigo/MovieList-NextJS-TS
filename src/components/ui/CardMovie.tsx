@@ -4,7 +4,7 @@ import Link from "next/link";
 export const CardMovie = () => {
   return (
     <div>
-      <div className="aspect-square pt-0">
+      <div className="w-full h-32 pt-0">
         <div className="h-full w-full flex overflow-hidden rounded-lg relative">
           <div className="absolute ">
             <p>DUNE PART I</p>
