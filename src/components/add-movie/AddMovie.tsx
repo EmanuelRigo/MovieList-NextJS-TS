@@ -44,21 +44,26 @@ export const AddMovie = () => {
   return (
     <div className="h-screen w-screen flex items-center">
       <div className="container rounded-lg bg-gray-900 p-4 mx-auto h-full lg:h-5/6 flex flex-col items-start lg:items-center justify-center">
-        <form
-          onSubmit={handleSubmit}
-          className="flex w-4/5 lg:w-2/4 mb-4 bg-white items-center rounded-full overflow-hidden shadow-sm"
-        >
-          <input
-            type="text"
-            placeholder="Buscar..."
-            className="w-full py-3 px-4 focus:outline-none"
-            value={busqueda}
-            onChange={handleInputChange}
-          />
-          <button type="submit" className="py-3 px-4">
-            <BsSearch />
-          </button>
-        </form>
+        <div className="flex justify-between align-center w-full pb-6">
+          <form
+            onSubmit={handleSubmit}
+            className="flex w-4/5 lg:w-2/4 bg-white items-center rounded-lg overflow-hidden shadow-sm"
+          >
+            <input
+              type="text"
+              placeholder="Busca la pelicula a agregar"
+              className="w-full py-3 px-4 focus:outline-none"
+              value={busqueda}
+              onChange={handleInputChange}
+            />
+            <button type="submit" className="py-3 px-4">
+              <BsSearch />
+            </button>
+          </form>
+          <Link className="p-4 bg-orange-500 rounded-lg" href="/">
+            volver
+          </Link>
+        </div>
         <div
           className="relative flex-grow w-full
         overflow-auto scrollbar-hidden "

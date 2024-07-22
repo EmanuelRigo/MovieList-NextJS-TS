@@ -3,7 +3,7 @@ import React from "react";
 
 const CardMovieViewer = () => {
   return (
-    <div className="p-4 h-full">
+    <div className="p-4 h-full ">
       <div className="flex flex-col p-4 h-full bg-gray-800 rounded-lg">
         <div className=" h-full bg-black rounded-lg bg-opacity-50">
           <div className="h-4/6 relative">
