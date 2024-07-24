@@ -70,7 +70,10 @@ export const AddMovie = () => {
         >
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 absolute w-full p-1">
             {peliculas.map((pelicula: Pelicula) => (
-              <div className="h-80 pt-0 rounded-lg overflow-hidden  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer">
+              <Link
+                href={`/add-movie/${pelicula.id}`}
+                className="h-80 pt-0 rounded-lg overflow-hidden  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer"
+              >
                 <div className="h-full w-full flex relative">
                   <div className="absolute bottom-0 bg-black bg-opacity-45 w-full text-white">
                     <p>{pelicula.title}</p>
@@ -92,7 +95,7 @@ export const AddMovie = () => {
                     />
                   )}
                 </div>
-              </div>
+              </Link>
 
               // <div
               //   className="max-w-sm bg-white rounded-lg shadow-md h-96 relative"
