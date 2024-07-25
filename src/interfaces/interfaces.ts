@@ -13,6 +13,7 @@ export interface Pelicula {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  genres: object[];
 }
 
 export interface MovieData {
