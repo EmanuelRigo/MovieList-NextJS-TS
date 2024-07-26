@@ -69,28 +69,39 @@ const Page = () => {
             className="object-cover rounded-lg "
           />
         </div>
-        <div className="text-white p-4 ">
-          <div className="flex">
-            {" "}
-            <h1 className="text-2xl">{pelicula.title}</h1>
-            <Link href="/add-movie" className="p-4 bg-orange-500 rounded-lg">
-              Volver
-            </Link>
+        <div className="text-white p-4 flex flex-col justify-between">
+          <div>
+            <div className="flex justify-between items-center mb-4">
+              <h1 className="text-2xl">{pelicula.title}</h1>
+              <Link
+                href="/add-movie"
+                className="p-4 bg-orange-500 rounded-lg text-black"
+              >
+                Volver
+              </Link>
+            </div>
+            <p className="mb-4">{pelicula.release_date}</p>
+            {pelicula.genres.map((genre) => (
+              <p key={genre.id}>{genre.name}</p>
+            ))}
+            <p>{pelicula.overview}</p>
           </div>
-
-          <p className="">{pelicula.release_date}</p>
-          {pelicula.genres.map((genre) => (
-            <p key={genre.id}>{genre.name}</p>
-          ))}
-          <p>{pelicula.overview}</p>
-          <div className="flex">
-            <button className="p-4 bg-gray-800 rounded-lg">VHS</button>
-            <button className="p-4 bg-gray-800 rounded-lg">DVD</button>
-            <button className="p-4 bg-gray-800 rounded-lg">BLU-RAY</button>
+          <div>
+            <div className="flex justify-start mb-4">
+              <button className="p-4 me-4 w-28 bg-gray-800 rounded-lg">
+                VHS
+              </button>
+              <button className="p-4 me-4 w-28 bg-gray-800 rounded-lg">
+                DVD
+              </button>
+              <button className="p-4 w-28 bg-gray-800 rounded-lg">
+                BLU-RAY
+              </button>
+            </div>
+            <button className="p-5 bg-orange-500 rounded-lg w-full text-black">
+              Agregar pelicula
+            </button>
           </div>
-          <button className="p-5 bg-orange-500 rounded-lg w-full">
-            Agregar pelicula
-          </button>
         </div>
       </div>
     </div>
