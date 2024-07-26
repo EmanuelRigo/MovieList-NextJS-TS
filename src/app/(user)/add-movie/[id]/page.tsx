@@ -88,13 +88,13 @@ const Page = () => {
           </div>
           <div>
             <div className="flex justify-start mb-4">
-              <button className="p-4 me-4 w-28 bg-gray-800 rounded-lg">
+              <button className="p-4 me-4 w-28 bg-gray-800 rounded-lg  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer focus:bg-orange-500 focus:text-black">
                 VHS
               </button>
-              <button className="p-4 me-4 w-28 bg-gray-800 rounded-lg">
+              <button className="p-4 me-4 w-28 bg-gray-800 rounded-lg  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer focus:bg-orange-500 focus:text-black">
                 DVD
               </button>
-              <button className="p-4 w-28 bg-gray-800 rounded-lg">
+              <button className="p-4 w-28 bg-gray-800 rounded-lg  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer focus:bg-orange-500 focus:text-black">
                 BLU-RAY
               </button>
             </div>
