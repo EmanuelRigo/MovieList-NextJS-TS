@@ -19,6 +19,9 @@ module.exports = {
         "azul-claro": "#243cff",
         "azul-oscuro": "#0d1b3e",
       },
+      aspectRatio: {
+        "4/6": "4 / 6",
+      },
     },
   },
   plugins: [],

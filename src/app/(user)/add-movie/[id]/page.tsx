@@ -53,9 +53,9 @@ const Page = () => {
 
   return (
     <div className="h-screen w-screen flex items-center">
-      <div className="container rounded-lg bg-gray-900 mx-auto grid lg:grid-cols-3 gap3 h-full lg:h-5/6 overflow-auto">
+      <div className="container rounded-lg  bg-gray-900 mx-auto flex w-full h-full lg:h-5/6 overflow-auto">
         <div
-          className="rounded-lg relative m-4  outline outline-offset-3 outline-orange-500
+          className="rounded-lg aspect-4/6  relative m-4  outline outline-offset-3 outline-orange-500
         "
         >
           <Image
@@ -69,7 +69,7 @@ const Page = () => {
             className="object-cover rounded-lg "
           />
         </div>
-        <div className="text-white p-4">
+        <div className="text-white p-4 ">
           <div className="flex">
             {" "}
             <h1 className="text-2xl">{pelicula.title}</h1>
