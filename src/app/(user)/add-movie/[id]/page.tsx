@@ -12,12 +12,28 @@ const Page = () => {
   const { movieToAdd, setMovieToAdd } = useMovieContext();
   const [pelicula, setPelicula] = useState<MovieToAdd>();
 
-  console.log(setMovieToAdd);
+  console.log(movieToAdd);
 
-  const handleChangeMovie = () => {
-    console.log(pelicula);
-    setMovieToAdd(pelicula);
-    console.log(movieToAdd, "pelicula22");
+  const checkFormats = () => {
+    const { vhs, dvd, bluray } = movieToAdd.formats;
+    if (vhs || dvd || bluray) {
+      alert(
+        "¡Atención! Alguno de los formatos (VHS, DVD o Blu-ray) está disponible."
+      );
+    } else alert("todo bien");
+  };
+
+  const handleFormatChange = (format: "vhs" | "dvd" | "bluray") => {
+    setMovieToAdd((prev) => {
+      const newValue = !prev.formats[format];
+      return {
+        ...prev,
+        formats: {
+          ...prev.formats,
+          [format]: newValue,
+        },
+      };
+    });
   };
 
   const params = useParams<{ id: string }>();
@@ -35,10 +51,17 @@ const Page = () => {
         );
         const data = await response.json();
         console.log(data);
+
         setPelicula(data);
-        setMovieToAdd(data);
-        console.log(movieToAdd, "pelicula 23");
-        console.log(movieToAdd, "hola pelicula");
+        setMovieToAdd({
+          ...data,
+          formats: {
+            vhs: false,
+            dvd: false,
+            bluray: false,
+          },
+        });
+        console.log(movieToAdd, "pelicula 27");
       } catch (error) {
         console.error("Ha ocurrido un error: ", error);
       }
@@ -47,7 +70,9 @@ const Page = () => {
     if (params.id) {
       fetchPeliculas();
     }
-  }, []);
+  }, [params.id]);
+
+  console.log(movieToAdd);
 
   const myLoader = ({ src, width, quality }: ImageLoaderProps) => {
     return `https://image.tmdb.org/t/p/w500${src}?w=${width}&q=${
@@ -96,18 +121,29 @@ const Page = () => {
           </div>
           <div>
             <div className="flex justify-start mb-4">
-              <button className="p-4 me-4 w-28 bg-gray-800 rounded-lg  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer focus:bg-orange-500 focus:text-black">
+              <button
+                onClick={() => handleFormatChange("vhs")}
+                className={`${
+                  movieToAdd.formats.vhs ? "bg-red-400" : "bg-green-500"
+                }p-4 me-4 w-28  rounded-lg  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer  focus:text-black`}
+              >
                 VHS
               </button>
-              <button className="p-4 me-4 w-28 bg-gray-800 rounded-lg  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer focus:bg-orange-500 focus:text-black">
+              <button
+                onClick={() => handleFormatChange("dvd")}
+                className="p-4 me-4 w-28 bg-gray-800 rounded-lg  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer focus:bg-orange-500 focus:text-black"
+              >
                 DVD
               </button>
-              <button className="p-4 w-28 bg-gray-800 rounded-lg  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer focus:bg-orange-500 focus:text-black">
+              <button
+                onClick={() => handleFormatChange("bluray")}
+                className="p-4 w-28 bg-gray-800 rounded-lg  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer focus:bg-orange-500 focus:text-black"
+              >
                 BLU-RAY
               </button>
             </div>
             <button
-              onClick={handleChangeMovie}
+              onClick={checkFormats}
               className="p-5 bg-orange-500 rounded-lg w-full text-black"
             >
               Agregar pelicula

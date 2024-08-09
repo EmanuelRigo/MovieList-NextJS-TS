@@ -35,6 +35,11 @@ const defaultMovie: MovieToAdd = {
   video: false,
   vote_average: 0,
   vote_count: 0,
+  formats: {
+    vhs: false,
+    dvd: false,
+    bluray: false,
+  },
 };
 
 const defaultContextValue: MovieContext = {

@@ -71,6 +71,7 @@ export const AddMovie = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 absolute w-full p-1">
             {peliculas.map((pelicula: Pelicula) => (
               <Link
+                key={pelicula.id}
                 href={`/add-movie/${pelicula.id}`}
                 className="h-80 pt-0 rounded-lg overflow-hidden  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer"
               >
