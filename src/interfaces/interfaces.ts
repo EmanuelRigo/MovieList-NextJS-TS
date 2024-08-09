@@ -54,7 +54,13 @@ export interface BelongsToCollection {
   backdrop_path: string;
 }
 
-export interface Movie {
+export interface format {
+  vhs: boolean;
+  dvd: boolean;
+  bluray: boolean;
+}
+
+export interface MovieToAdd {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection: BelongsToCollection | null;
@@ -81,4 +87,5 @@ export interface Movie {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  formats: format;
 }

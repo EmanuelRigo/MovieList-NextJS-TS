@@ -1,26 +1,31 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Pelicula } from "@/interfaces/interfaces";
+import { Pelicula, MovieToAdd } from "@/interfaces/interfaces";
 import { useParams } from "next/navigation";
 import Image, { ImageLoaderProps } from "next/image";
+import { useMovieContext } from "@/context/movieContext";
 
 import Link from "next/link";
 
-interface Genre {
-  id: number;
-  name: string;
-}
-
 const Page = () => {
+  const { movieToAdd, setMovieToAdd } = useMovieContext();
+  const [pelicula, setPelicula] = useState<MovieToAdd>();
+
+  console.log(setMovieToAdd);
+
+  const handleChangeMovie = () => {
+    console.log(pelicula);
+    setMovieToAdd(pelicula);
+    console.log(movieToAdd, "pelicula22");
+  };
+
   const params = useParams<{ id: string }>();
   console.log(params);
   console.log(params.id);
 
   const urlBase: string = "https://api.themoviedb.org/3/movie/";
   const API_KEY: string = "67c383651f5d04b52d4a09b8a9d41b9a";
-
-  const [pelicula, setPelicula] = useState<Pelicula>();
 
   useEffect(() => {
     const fetchPeliculas = async () => {
@@ -29,8 +34,11 @@ const Page = () => {
           `${urlBase}${params.id}?api_key=${API_KEY}`
         );
         const data = await response.json();
-        setPelicula(data);
         console.log(data);
+        setPelicula(data);
+        setMovieToAdd(data);
+        console.log(movieToAdd, "pelicula 23");
+        console.log(movieToAdd, "hola pelicula");
       } catch (error) {
         console.error("Ha ocurrido un error: ", error);
       }
@@ -98,7 +106,10 @@ const Page = () => {
                 BLU-RAY
               </button>
             </div>
-            <button className="p-5 bg-orange-500 rounded-lg w-full text-black">
+            <button
+              onClick={handleChangeMovie}
+              className="p-5 bg-orange-500 rounded-lg w-full text-black"
+            >
               Agregar pelicula
             </button>
           </div>

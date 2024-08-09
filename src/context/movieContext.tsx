@@ -1,12 +1,14 @@
-import React, { createContext, ReactNode, useState } from "react";
-import { Movie } from "@/interfaces/interfaces";
+"use client";
 
-interface MovieContextProps {
-  movie: Movie;
-  setMovie: React.Dispatch<React.SetStateAction<Movie>>;
+import React, { createContext, ReactNode, useContext, useState } from "react";
+import { MovieToAdd } from "@/interfaces/interfaces";
+
+interface MovieContext {
+  movieToAdd: MovieToAdd;
+  setMovieToAdd: React.Dispatch<React.SetStateAction<MovieToAdd>>;
 }
 
-const defaultMovie: Movie = {
+const defaultMovie: MovieToAdd = {
   adult: false,
   backdrop_path: "",
   belongs_to_collection: null,
@@ -35,25 +37,28 @@ const defaultMovie: Movie = {
   vote_count: 0,
 };
 
-interface MovieContextProps {
-  movie: Movie;
-  setMovie: React.Dispatch<React.SetStateAction<Movie>>;
-}
+const defaultContextValue: MovieContext = {
+  movieToAdd: defaultMovie,
+  setMovieToAdd: () => {},
+};
 
-const MovieContext = createContext<MovieContextProps>({
-  movie: defaultMovie,
-  setMovie: () => {}, // Placeholder
-});
+const MovieContext = createContext<MovieContext>(defaultContextValue);
 
-interface MovieProviderProps {
-  children: ReactNode;
-}
+export const useMovieContext = () => {
+  const context = useContext(MovieContext);
+  if (!context) {
+    throw new Error("useMovieContext debe usarse dentro de MovieProvider");
+  }
+  return context;
+};
 
-export const MovieProvider: React.FC<MovieProviderProps> = ({ children }) => {
-  const [movie, setMovie] = useState<Movie>(defaultMovie);
+export const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [movieToAdd, setMovieToAdd] = useState<MovieToAdd>(defaultMovie);
 
   return (
-    <MovieContext.Provider value={{ movie, setMovie }}>
+    <MovieContext.Provider value={{ movieToAdd, setMovieToAdd }}>
       {children}
     </MovieContext.Provider>
   );
