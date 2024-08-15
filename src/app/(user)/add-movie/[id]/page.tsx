@@ -124,20 +124,24 @@ const Page = () => {
               <button
                 onClick={() => handleFormatChange("vhs")}
                 className={`${
-                  movieToAdd.formats.vhs ? "bg-red-400" : "bg-green-500"
-                }p-4 me-4 w-28  rounded-lg  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer  focus:text-black`}
+                  movieToAdd.formats.vhs ? "bg-orange-500" : "bg-gray-800"
+                } p-4 me-4 w-28  rounded-lg  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer`}
               >
                 VHS
               </button>
               <button
                 onClick={() => handleFormatChange("dvd")}
-                className="p-4 me-4 w-28 bg-gray-800 rounded-lg  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer focus:bg-orange-500 focus:text-black"
+                className={`${
+                  movieToAdd.formats.dvd ? "bg-orange-500" : "bg-gray-800"
+                } p-4 me-4 w-28  rounded-lg  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer`}
               >
                 DVD
               </button>
               <button
                 onClick={() => handleFormatChange("bluray")}
-                className="p-4 w-28 bg-gray-800 rounded-lg  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer focus:bg-orange-500 focus:text-black"
+                className={`${
+                  movieToAdd.formats.bluray ? "bg-orange-500" : "bg-gray-800"
+                } p-4 w-28  rounded-lg  outline outline-none hover:outline-offset-3 hover:outline-orange-500 hover:cursor-pointer`}
               >
                 BLU-RAY
               </button>

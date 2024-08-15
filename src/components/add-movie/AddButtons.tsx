@@ -1,4 +1,19 @@
 import { Pelicula, MovieToAdd } from "@/interfaces/interfaces";
+import { useMovieContext } from "@/context/movieContext";
+
+
+const handleFormatChange = (format: "vhs" | "dvd" | "bluray") => {
+  setMovieToAdd((prev) => {
+    const newValue = !prev.formats[format];
+    return {
+      ...prev,
+      formats: {
+        ...prev.formats,
+        [format]: newValue,
+      },
+    };
+  });
+};
 
 export const AddButtons = () => {
   return (
