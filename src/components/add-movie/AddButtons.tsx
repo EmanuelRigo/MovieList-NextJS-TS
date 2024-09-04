@@ -1,7 +1,6 @@
 import { Pelicula, MovieToAdd } from "@/interfaces/interfaces";
 import { useMovieContext } from "@/context/movieContext";
 
-
 const handleFormatChange = (format: "vhs" | "dvd" | "bluray") => {
   setMovieToAdd((prev) => {
     const newValue = !prev.formats[format];
@@ -16,6 +15,7 @@ const handleFormatChange = (format: "vhs" | "dvd" | "bluray") => {
 };
 
 export const AddButtons = () => {
+  const { movieToAdd, setMovieToAdd } = useMovieContext();
   return (
     <div>
       <div className="flex justify-start mb-4">
