@@ -677,5 +677,5 @@
     video: false,
     vote_average: 3.335,
     vote_count: 448,
-  },
+  }
 ];

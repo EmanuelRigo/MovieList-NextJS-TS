@@ -11,4 +11,4 @@ export * from "./ui/CardMovie";
 
 export * from "./add-movie/AddMovie";
 export * from "./add-movie/CardAddMovie";
-export * from "./add-movie/AddButtons";
+//export * from "./add-movie/AddButtons";
